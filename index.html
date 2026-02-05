@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Veduu 💗</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffd1e8,#ff9acb);
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:30px 25px;
+    border-radius:20px;
+    text-align:center;
+    width:300px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    z-index:10;
+}
+
+h2{color:#ff4f9a;}
+p{color:#555;font-size:14px;}
+
+.name{
+    color:#ff4f9a;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+button{
+    border:none;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    margin:6px;
+    font-size:14px;
+}
+
+.yes{
+    background:#ff4f9a;
+    color:white;
+}
+
+.no{
+    background:#ffd1e8;
+    color:#ff4f9a;
+}
+
+/* papers */
+
+.paper{
+    position:fixed;
+    top:-10px;
+    width:10px;
+    height:14px;
+    background:pink;
+    animation:fall linear forwards;
+    opacity:0.9;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="box">
+    <div class="name">For Veduu 💗</div>
+    <h2>Hey…</h2>
+    <p>Please don’t be unhappy with me.  
+    I really care about you.</p>
+
+    <p><b>Are you set up?</b></p>
+
+    <button class="yes" onclick="ready()">Yes</button>
+    <button class="no" onclick="notReady()">Not yet</button>
+</div>
+
+
+<script>
+function ready(){
+    document.getElementById("box").innerHTML = `
+        <div class="name">For Veduu 💗</div>
+        <h2>Yrr… idk how to say this 🥺</h2>
+        <p>You really mean a lot to me.</p>
+        <p><b>Will you be my Valentine? 💌</b></p>
+
+        <button class="yes" onclick="finalYes()">Yes</button>
+        <button class="no" onclick="finalNo()">No</button>
+    `;
+}
+
+function notReady(){
+    alert("It’s okay… take your time 🌸");
+}
+
+function finalYes(){
+    document.getElementById("box").innerHTML = `
+        <div class="name">For Veduu 💗</div>
+        <h2>Yayyy 💞</h2>
+        <p>You just made my day.</p>
+        <p>Thank you for being my Valentine 🌷</p>
+    `;
+
+    startPapers();
+}
+
+function finalNo(){
+    document.getElementById("box").innerHTML = `
+        <div class="name">For Veduu 💗</div>
+        <h2>It’s okay 🌸</h2>
+        <p>Still wishing you a beautiful day 💗</p>
+    `;
+}
+
+/* paper / confetti effect */
+
+function startPapers(){
+    for(let i=0;i<70;i++){
+        createPaper();
+    }
+}
+
+function createPaper(){
+    const paper = document.createElement("div");
+    paper.className = "paper";
+
+    const colors = ["#ff4f9a","#ffd1e8","#ffffff","#ff9acb"];
+    paper.style.background = colors[Math.floor(Math.random()*colors.length)];
+
+    paper.style.left = Math.random()*100 + "vw";
+    paper.style.animationDuration = (2 + Math.random()*3) + "s";
+
+    document.body.appendChild(paper);
+
+    setTimeout(()=>{
+        paper.remove();
+    },5000);
+}
+</script>
+
+</body>
+</html>
